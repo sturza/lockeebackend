@@ -22,10 +22,10 @@
      	<li>To keep everything smooth download any project on Desktop</li>
       	<li>CMDS:
       		<ol>
-        			<li> cd Desktop\(name_of_project)
+        			<li> cd Desktop\name_of_project
 		        	<li> python manage.py runserver
 		     </ol>
-      	<li>You will receive an URL pointing to the localhost ( http://127.0.0.1:8000/(name_of_project) ) ; To access to project input in your browser : http://127.0.0.1:8000/<name_of_project>
+      	<li>You will receive an URL pointing to the localhost ( http://127.0.0.1:8000/name_of_project ) ; To access to project input in your browser : http://127.0.0.1:8000/name_of_project
      	 <li>Check a project's README for further details
     	</ul>
 <li>TUTORIALS
