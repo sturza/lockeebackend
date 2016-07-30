@@ -16,6 +16,6 @@ urlpatterns = [
     url(r'^secret/get_locks/$', views.lock_query),
     url(r'^portal_mechanic/(?P<lock_inner_id>[-\w]+)/$', views.portal_mechanic, name='portal-mechanic'),
     url(r'^secret/verify_register/$', views.andro_verify),
-    url(r'^arduino/hello/$', views.arduino_hello),
-    url(r'^arduino/post/$', views.arduino_ping),
+    url(r'^arduino/register-lock/(?P<what_lock>[-\w]+)/$', views.arduino_register_lock, name='arduino-register-lock'),
+    url(r'^arduino/post/$', views.arduino_mechanic, name='arduino-mechanic'),
 ]
