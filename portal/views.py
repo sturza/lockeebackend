@@ -79,7 +79,7 @@ class Display_My_Locks(LoginRequiredMixin, ListView):
     """This view displays the locks of the user."""
     login_url = 'portal:login'
     redirect_field_name = 'redirect_to'
-    template_name = 'portal/mylocks.html'
+    template_name = 'portal/my-locks.html'
 
     def get_queryset(self):
         return Lock.objects.filter(owner='qwerty@gmail.com')
@@ -134,7 +134,8 @@ def share(request, lock_inner_id):
 
 @login_required(login_url='portal:login')
 def generate_code(request, lock_inner_id):
-    """This view genearates a new share code at user's demand."""
+    """This view generates a new share code at user's demand.
+    """
     lock_to_change = Lock.objects.get(lock_inner_id=str(lock_inner_id))
     lock_to_change.share_id = ''.join(choice(ascii_uppercase) for i in range(12))
     lock_to_change.save()
@@ -253,3 +254,29 @@ def portal_mechanic(request, lock_inner_id):
 def android_mechanic(request, lock_inner_id):
     """This view opens/closes a lock via an android terminal."""
     pass
+
+
+def arduino_register_lock(request, what_lock):
+    """This view registers a lock as available in the database - the url is called by arduino automatically."""
+    try:
+        lock = Lock.objects.get(lock_inner_id=what_lock)
+        return HttpResponse('already added')
+    except Lock.DoesNotExist:
+        lock = Lock()
+        lock.lock_inner_id = what_lock
+        lock.save()
+    return HttpResponse('lock success')
+
+
+def arduino_mechanic(request, what_lock):
+    """This view sends the open/close signal to the arduino-lock."""
+    url = 'http://arduinosomething.co/%s' % what_lock
+    lock = Lock.objects.get(lock_inner_id=what_lock)
+    if lock.is_opened:
+        payload = {'action': 'close'}
+    else:
+        payload = {'action': 'open'}
+    response = request.post(url, params=payload)
+    return redirect('portal:my-locks')
+
+
