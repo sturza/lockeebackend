@@ -1,3 +1,4 @@
+import json
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.list import ListView
 from random import choice
@@ -253,3 +254,14 @@ def portal_mechanic(request, lock_inner_id):
 def android_mechanic(request, lock_inner_id):
     """This view opens/closes a lock via an android terminal."""
     pass
+
+
+def arduino_ping(request):
+    post_data = {'string': 'wow'}
+    result = request.post('http://arduino.com', params=post_data)
+    context = json.loads(result.json())
+    return render(request, 'portal/arduino_response.html', context)
+
+
+def arduino_hello(request):
+    return HttpResponse('hello:3')
