@@ -75,14 +75,10 @@ class Login(View):
         return render(request, self.template_name, {'form': form})
 
 
-class Display_My_Locks(LoginRequiredMixin, ListView):
-    """This view displays the locks of the user."""
-    login_url = 'portal:login'
-    redirect_field_name = 'redirect_to'
-    template_name = 'portal/mylocks.html'
+@login_required(login_url='portal:login')
+def Display_My_Locks(request):
 
-    def get_queryset(self):
-        return Lock.objects.filter(owner='qwerty@gmail.com')
+
 
 
 @login_required(login_url='portal:login')
