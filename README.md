@@ -1,7 +1,6 @@
 # lockeebackend
 <p> **Our backend uses Python+Django** 
 <p> Glimpse Team - For IT 2016
-<p> Wizard in charge - Andrei Bratu, Snake Charmer 
 <p> TO DO 
 <ul>
   <li> ~~Proper DB model~~ 
