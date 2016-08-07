@@ -13,3 +13,4 @@
   <li> Add share code mechanic
   <li> Add Forgot Password mechanic
   <li> Google Maps Integration ? 
+  <li> User Privileges ?
