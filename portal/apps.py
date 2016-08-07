@@ -7,9 +7,7 @@ class PortalConfig(AppConfig):
     name = 'portal'
 
 
-# TODO I have a code > *codul* > *Lockee!*
-# TODO *View all locks* >nickname_lacat - lockee! / switch - share //website >lockee! / switch - share // android
-# TODO  *overflow menu* >About   >Preferences   >View all locks 	>Log Out   >Profil
+# TODO Custom 404
 # TODO //OPTIONAL 	>forgot password >change lock nickname
 
 
