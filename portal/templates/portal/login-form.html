@@ -3,6 +3,14 @@
 
 {% block body %}
 
+    <!-- Display error in case there is one -->
+    {% if '{{error}}' %}
+        <div class="col-sm-offset-2 col-sn-10">
+            <p> {{error}} </p>
+            <br>
+        </div>
+    {% endif %}
+
     <!-- Login Form -->
     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -13,9 +21,9 @@
             </div>
         </div>
     </form>
-
+    &nbsp;
     <!-- Register Button -->
-    <div class="col-sm-offset-2 col-sn-30">
+    <div class="col-sm-offset-2 col-sn-10">
         <form action="{% url 'portal:register' %}" method="get" >
             {% csrf_token %}
             <input type="hidden">

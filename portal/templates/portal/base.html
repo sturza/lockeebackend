@@ -14,7 +14,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
 
-                <!--NavBar  -->
+                <!-- NavBar Declaration -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
                         <span class="icon-bar"></span>
@@ -28,13 +28,16 @@
 
                 <!-- Nav Bar Items -->
                 <div class="collapse navbar-collapse" id="topNavBar">
+                    <!-- Left-sided navbar items -->
                     <ul class="nav navbar-nav">
                         {% if user.is_authenticated %}
+                        <!-- Logged-in user's locks -->
                         <li class="">
                             <a href="{% url 'portal:my-locks' %}">
                                 <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp; My Locks
                             </a>
                         </li>
+                        <!-- Add a new lock -->
                         <li class="">
                             <a href="{% url 'portal:add-lock' %}">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Lock
@@ -42,24 +45,29 @@
                         </li>
                         {% endif %}
                     </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="portal/about.html">
-                                    <span class="glyphicons glyphicons-tag" aria-hidden="true"></span>&nbsp; About
-                                </a>
-                            </li>
+                    <!-- Right-sided navbar items -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- About us ^_^ -->
+                        <li>
+                            <a href="{% url 'portal:about' %}">
+                                <span class="glyphicons glyphicons-tag" aria-hidden="true"></span>&nbsp; About
+                            </a>
+                        </li>
                         {% if user.is_authenticated %}
+                        <!-- User's profile redirect -->
                         <li class="#">
                             <a href="{% url 'portal:profile' %}">
                                 <span class="glyphicon glyphicon-profile" aria-hidden="true"></span>&nbsp; {{ user.first_name }} {{user.last_name}}
                             </a>
                         </li>
+                        <!-- User Logout -->
                         <li class="#">
                             <a href="{% url 'portal:logout' %}">
                                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Log Out
                             </a>
                         </li>
                         {% else %}
+                        <!-- User Login -->
                         <li>
                             <a href="{% url 'portal:login' %}">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Log In

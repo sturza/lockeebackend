@@ -5,12 +5,12 @@ from .models import Lock
 
 class UserReg(forms.ModelForm):
     username = forms.CharField(label='Your email')
-    full_name = forms.CharField(label='Your name')
+    first_name = forms.CharField(label='Your name')
     password = forms.CharField(label='Choose a password', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'password']
+        fields = ['username', 'first_name', 'password']
 
 
 class UserLogin(forms.Form):
@@ -42,13 +42,13 @@ class AddLock(forms.Form):
 
 class AndroRegister(forms.ModelForm):
 
-     class Meta:
+    class Meta:
          model = User
-         fields = ['username', 'first_name', 'last_name', 'password']
+         fields = ['username', 'first_name', 'password']
 
-     username = forms.CharField()
-     name = forms.CharField()
-     password = forms.CharField()
+    username = forms.CharField()
+    name = forms.CharField()
+    password = forms.CharField()
 
 
 class VerifyAndro(forms.Form):
@@ -58,3 +58,8 @@ class VerifyAndro(forms.Form):
 class LockSecret(forms.Form):
     username = forms.CharField()
     secret = forms.CharField()
+
+
+class AndroidOpenLock(forms.Form):
+    username = forms.CharField()
+    lock_id = forms.CharField()
